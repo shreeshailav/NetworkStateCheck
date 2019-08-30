@@ -1,7 +1,10 @@
 package com.shreeshail.networkstatecheck;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -20,6 +23,8 @@ public class MainActivity extends AppCompatActivity implements ConnectionTracer 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        networkStatus = findViewById(R.id.networkStatus);
+
         connectionManager = new ConnectionManager.Builder()
                 .setContext(this)
                 .setStatusView(this)
@@ -35,12 +40,18 @@ public class MainActivity extends AppCompatActivity implements ConnectionTracer 
     protected void onPause() {
         super.onPause();
      }
-     
+
     @Override
     public void connectionState(int isConnected) {
-        if(isConnected==1)
+        if(isConnected==1){
             Log.i("RX-Internet : ","Online");
-        else
-            Log.i("RX-Internet : ","Offline");
+            networkStatus.setText("Online");
+            networkStatus.setTextColor(Color.BLUE);
+        }
+        else {
+            Log.i("RX-Internet : ", "Offline");
+            networkStatus.setText("Offline");
+            networkStatus.setTextColor(Color.RED);
+        }
     }
 }
