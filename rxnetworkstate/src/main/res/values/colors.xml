@@ -5,8 +5,4 @@
     <color name="colorAccent">#FF4081</color>
 
 
-    <color name="color_white">#FFFFFF</color>
-    <color name="color_bg_loading">#dc858585</color>
-    <color name="color_bg_success">#dc82ce32</color>
-    <color name="color_bg_error">#dcd84315</color>
 </resources>
